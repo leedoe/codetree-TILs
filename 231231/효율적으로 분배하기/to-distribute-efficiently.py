@@ -8,8 +8,11 @@ def div(num, five, three):
     if num < 0:
         return -1
     
-    div(num - 5, five + 1, three)
-    div(num - 3, five, three + 1)
+    if num - 5 >= 0:
+        div(num - 5, five + 1, three)
+    
+    if num - 3 >= 0:
+        div(num - 3, five, three + 1)
 
 div(int(input()), 0, 0)
 if result == 2000:
