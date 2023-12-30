@@ -1,20 +1,11 @@
+n = int(input())
 result = 2000
-def div(num, five, three):
-    global result
-    if num == 0 and result > five + three:
-        result = five + three
-        return 1
-    
-    if num < 0:
-        return -1
-    
-    if num - 5 >= 0:
-        div(num - 5, five + 1, three)
-    
-    if num - 3 >= 0:
-        div(num - 3, five, three + 1)
-
-div(int(input()), 0, 0)
+for i in range(n // 5 + 1):
+    rest = n - (i * 5)
+    div = rest / 3
+    if rest // 3 == div:
+        if result > i * div:
+            result = int(i + div)
 if result == 2000:
     print(-1)
 else:
