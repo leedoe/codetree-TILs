@@ -16,8 +16,9 @@ for character in al:
         continue
 
     if count[index] == 2:
+        found = stack.index(character)
+        result += len(stack[found + 1:])
         stack.remove(character)
-        result += len(stack)
         continue
 
     stack.append(character)
