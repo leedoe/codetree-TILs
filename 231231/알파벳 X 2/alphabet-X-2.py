@@ -1,15 +1,25 @@
-temp = [[] for _ in range(53)]
+stack = []
+count = [0 for _ in range(52)]
 al = list(input())
+
 result = 0
-for n in range(1, 53):
-    if n == 1:
-        temp[n] = [al[0]]
-    else:
-        before_al = al.index(al[n - 1])
-        if before_al == n - 1:
-            temp[n] = temp[n - 1] + [al[n - 1]]
-        else:
-            temp[n] = list(set(temp[n - 1]) - set([al[n - 1]]))
-            if set(temp[n]) != set(temp[before_al]):
-                result += 1
-print(result // 2)
+for character in al:
+    index = ord(character) - 65
+    count[index] += 1
+
+    if len(stack) == 0:
+        stack.append(character)
+        continue
+
+    if character == stack[-1]:
+        stack.pop()
+        continue
+
+    if count[index] == 2:
+        stack.remove(character)
+        result += len(stack)
+        continue
+
+    stack.append(character)
+
+print(result)
